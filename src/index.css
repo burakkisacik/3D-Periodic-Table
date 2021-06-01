@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +12,56 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#canvas-container {
+  height: 100vh;
+}
+
+#App {
+  position: relative;
+  background-color: #192229;
+  overflow: hidden;
+}
+
+#elementClassesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  width: 400px;
+  padding: 30px;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.elementClasses {
+  width: 50%;
+  height: 200px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.class {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.classColor {
+  width: 20px;
+  height: 20px;
+  background: red;
 }
