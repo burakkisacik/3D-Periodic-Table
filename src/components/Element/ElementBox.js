@@ -1,32 +1,51 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import ElementSymbol from './ElementSymbol';
 import ElementAtomicNumber from './ElementAtomicNumber';
 import ElementName from './ElementName';
 import { useSpring, animated, config } from '@react-spring/three';
 import ElementInfoCard from './ElementInfoCard';
+import EventEmitter from '../../utils/EventEmitter';
 
 function ElementBox(props) {
   const iMesh = useRef();
   const [active, setActive] = useState(false);
   const [hovered, setHover] = useState(false);
+  const [panelClassHover, setPanelClassHover] = useState(false);
+
+  EventEmitter.addListener('PanelClassHover', (e) => {
+    if (e === props.element.category) {
+      setPanelClassHover(true);
+    }
+  });
+
+  EventEmitter.addListener('PanelClassNotHover', () => {
+    setPanelClassHover(false);
+  });
+
+  // EventEmitter.addListener('PanelClassHoverPasif', (e) => {
+  //   if (e === 'leave') {
+  //     setActive(false);
+  //   }
+  // });
 
   const { zposition } = useSpring({
-    zposition: active ? 2 : 1,
+    zposition: active || panelClassHover ? 2 : 1,
     config: config.wobbly,
   });
 
   const { opa } = useSpring({
-    opa: hovered || active ? 0.2 : 0.1,
+    opa: hovered || active || panelClassHover ? 0.2 : 0.1,
     config: config.wobbly,
   });
 
   const colorMap = {
     'noble gas': '#04bcd4',
     'alkaline earth metal': '#ff9800',
-    'diatomic nonmetal': '#03a9f3',
+    'diatomic nonmetal': '#673ab7',
     'alkali metal': '#f44336',
     'transition metal': '#efbb31',
     'post-transition metal': '#218380',
+    'polyatomic nonmetal': '#03a9f3',
     lanthanide: '#8bc34a',
     metalloid: '#73D2DE',
     actinide: '#ccdc3a',
