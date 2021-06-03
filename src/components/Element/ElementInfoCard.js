@@ -22,7 +22,7 @@ function ElementInfoCard(props) {
           transform: `scale(${hidden ? 0.5 : 1})`,
         }}
         distanceFactor={1.5}
-        position={[1.5, 1.5, 1]}
+        position={[1.5, -1.5, 1]}
         transform
         occlude
         onOcclude={setVisible}

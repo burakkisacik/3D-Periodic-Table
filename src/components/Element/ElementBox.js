@@ -54,7 +54,7 @@ function ElementBox(props) {
   const color = colorMap[props.element.category] || 'white';
 
   const xpos = props.element.xpos - 8;
-  const ypos = props.element.ypos * -1 + 5;
+  const ypos = props.element.ypos * -1 + 6.5;
 
   const ThePositon = [xpos, ypos, 1];
 

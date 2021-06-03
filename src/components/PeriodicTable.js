@@ -9,6 +9,12 @@ function PeriodicTable(props) {
     <div id='canvas-container'>
       <Canvas camera={{ position: [0, 0, 12] }}>
         {data.elements.map((element) => {
+          let xoffset = (element.xpos - 1) / 50;
+          element.xpos += xoffset;
+
+          let yoffset = (element.ypos - 1) / 50;
+          element.ypos += yoffset;
+
           return <ElementBox key={element.name} element={element} />;
         })}
         <OrbitControls />
